@@ -1,0 +1,15 @@
+SRCS= client.cpp packet.cpp mythread.cpp
+
+HEADERS= client.h packet.h mythread.h
+
+OBJS= client.o packet.o mythread.o
+
+CXXFLAGS= -g -Wall -I/home/PHOENIX/dillon/qt4.5/include -I/usr/include/qt4 -D__STDC_LIMIT_MACROS
+
+all: client
+
+client: $(OBJS) $(SRCS) $(HEADERS)
+	g++ -g -o $@ $(OBJS) -L/home/PHOENIX/dillon/qt4.5/lib -lQtCore -lQtGui 
+
+clean:
+	rm -f $(OBJS) client *~ 

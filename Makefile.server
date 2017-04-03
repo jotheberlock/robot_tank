@@ -1,0 +1,15 @@
+SRCS= server.cpp packet.cpp motors.cpp ai.cpp camera.cpp mythread.cpp ax12.cpp
+ 
+HEADERS= server.h packet.h motors.h ai.h camera.h mythread.h ax12.h
+
+OBJS= server.o packet.o motors.o ai.o camera.o mythread.o ax12.o
+
+CXXFLAGS= -g -Wall -I/home/PHOENIX/dillon/qt4.5/include -I/usr/include/qt4 -I/home/PHOENIX/dillon -I/home/jo -D__STDC_LIMIT_MACROS
+
+all: server
+
+server: $(OBJS) $(SRCS) $(HEADERS)
+	g++ -g -o $@ $(OBJS) -L/home/PHOENIX/dillon/qt4.5/lib -L/home/PHOENIX/dillon/lestat -L/home/jo/lestat -lQtCore -lQtGui -llestat -lusb -lv4l2
+
+clean:
+	rm -f $(OBJS) server *~ 
